@@ -1,30 +1,48 @@
 ﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Ioc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Common.ViewModel
 {
-    public class MainViewModel:ObservableObject
+    public class MainViewModel:ViewModelBase
     {
-        private Player _selectedPlayer;
-
-        public Player SelectedPlayer
+        ViewModelBase _current;
+        public ViewModelBase CurrentViewModel
         {
-            get { return _selectedPlayer; }
-            set { Set(ref _selectedPlayer , value); }
+            get
+            {
+                return _current;
+            }
+            set
+            {
+                Set(ref _current , value);
+            }
         }
 
-        private List<Player> _players = new List<Player>();
-        public IEnumerable<Player> Players { get { return _players; } }
-
+        public ICommand NavigateTo { get; private set; }
         public MainViewModel()
         {
-            //TODO: retrieve data from file
-            _players.Add(new Player { Name = "Kang", PictureUrl = "http://img3.wikia.nocookie.net/__cb20131208164609/simpsons/images/thumb/d/d4/Tapped_Out_Unlock_Kang.png/200px-Tapped_Out_Unlock_Kang.png" });
-            _players.Add(new Player { Name = "Bart", PictureUrl = "http://img4.wikia.nocookie.net/__cb20140110020448/simpsons/images/1/14/Bartsimpson2.png" });
+            NavigateTo = new RelayCommand<string>(ExecuteNavigation, CanExecuteNavigation);
+
+            //default vm
+            CurrentViewModel = SimpleIoc.Default.GetInstance<LoginViewModel>();
+        }
+
+        private void ExecuteNavigation(string view)
+        {
+
+        }
+
+
+        private bool CanExecuteNavigation(string view)
+        {
+            return true;
         }
     }
 }

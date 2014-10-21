@@ -3,28 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         DataContext="{Binding Main, Mode=OneWay, Source={StaticResource Locator}}"
         Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" Margin="20">
-            <TextBlock>Selected Name: <Run Text="{Binding SelectedPlayer.Name}"/></TextBlock>
-        </StackPanel>
-        <ListView Margin="20" ItemsSource="{Binding Players}" SelectedItem="{Binding SelectedPlayer}" Grid.Row="1">
-            <ListView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <StackPanel Orientation="Horizontal"/>
-                </ItemsPanelTemplate>
-            </ListView.ItemsPanel>
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel>
-                        <Image Source="{Binding PictureUrl}" Height="100" Width="100"/>
-                        <TextBlock Text="{Binding Name}" HorizontalAlignment="Center" Margin="10"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+    <Grid>        
+        <ContentControl Content="{Binding CurrentViewModel}"/>
     </Grid>
 </Window>

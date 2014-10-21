@@ -43,6 +43,7 @@ namespace Common.ViewModel
             ////}
 
             SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<LoginViewModel>();
         }
 
         public MainViewModel Main
@@ -51,7 +52,7 @@ namespace Common.ViewModel
             {
                 return ServiceLocator.Current.GetInstance<MainViewModel>();
             }
-        }
+        }        
         
         public static void Cleanup()
         {
