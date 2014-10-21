@@ -5,6 +5,7 @@
              d1p1:Ignorable="d" xmlns:d1p1="http://schemas.openxmlformats.org/markup-compatibility/2006">
   <Application.Resources>
     <vm:ViewModelLocator x:Key="Locator" d:IsDataSource="True"  />
+    <!-- see http://stackoverflow.com/questions/19654295/wpf-mvvm-navigate-views -->
     <DataTemplate DataType="{x:Type vm:LoginViewModel}" >
             <views:LoginView/>
         </DataTemplate>
