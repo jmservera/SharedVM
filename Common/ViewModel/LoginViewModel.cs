@@ -1,4 +1,5 @@
-﻿using GalaSoft.MvvmLight;
+﻿using Common.Models;
+using GalaSoft.MvvmLight;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace Common.ViewModel
 {
     public class LoginViewModel:ViewModelBase
     {
-                private Player _selectedPlayer;
+        private Player _selectedPlayer;
 
         public Player SelectedPlayer
         {
